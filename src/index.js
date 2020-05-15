@@ -7,12 +7,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import addVideo from './store/reducers/addVideo';
+import items from './store/reducers/items';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const combinedReducers = combineReducers({
-  addVideo,
+  items,
 });
 
 const store = createStore(

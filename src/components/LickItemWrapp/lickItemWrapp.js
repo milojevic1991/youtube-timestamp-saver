@@ -1,23 +1,23 @@
 import React from 'react';
 import { Wrapper } from './styled';
 import YouTube from 'react-youtube';
-
+import { useSelector, useDispatch } from 'react-redux';
 import LickItem from './LickItem/lickItem';
 
+import { deleteItem } from '../../store/actions/action';
+
 const LickItemWrapp = () => {
-  const opts = {
-    height: '100%',
-    width: '100%',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
-    },
+  const state = useSelector((state) => state.items.listData);
+  const dispatch = useDispatch();
+
+  const deleteHandler = (e) => {
+    console.log('evp ga', e);
+    dispatch(deleteItem(e));
   };
+
   return (
     <Wrapper>
-      <LickItem />
-      <LickItem />
-      <LickItem />
+      <LickItem deleteLink={deleteHandler} linkData={state} />
     </Wrapper>
   );
 };

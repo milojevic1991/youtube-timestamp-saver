@@ -6,3 +6,10 @@ export const addItem = (data) => {
     payload: data,
   };
 };
+
+export const deleteItem = (id) => {
+  return {
+    type: actionTypes.DELETE_LINK,
+    payload: id,
+  };
+};
