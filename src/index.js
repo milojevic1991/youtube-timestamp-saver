@@ -11,14 +11,26 @@ import items from './store/reducers/items';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const persistedState = localStorage.getItem('reduxState')
+  ? JSON.parse(localStorage.getItem('reduxState'))
+  : [];
+
 const combinedReducers = combineReducers({
   items,
 });
 
 const store = createStore(
   combinedReducers,
+  persistedState,
   composeEnhancers(applyMiddleware(thunk))
 );
+
+store.subscribe(() => {
+  localStorage.setItem(
+    'reduxState',
+    JSON.stringify(store.getState().items.listData)
+  );
+});
 
 ReactDOM.render(
   <React.StrictMode>

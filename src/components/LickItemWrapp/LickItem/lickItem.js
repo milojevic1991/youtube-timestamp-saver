@@ -1,7 +1,7 @@
 import React from 'react';
-import { LickItemBox, LickItemTitle, LickItemDelete } from './styled';
+import { LickItemBox, LickItemTitle, LickItemDelete, Play } from './styled';
 
-const LickItem = ({ linkData, deleteLink }) => {
+const LickItem = ({ linkData, deleteLink, playLink }) => {
   const listBox = linkData.map((el, index) => (
     <LickItemBox key={index}>
       {/* prettier-ignore */}
@@ -17,6 +17,7 @@ const LickItem = ({ linkData, deleteLink }) => {
         allowfullscreen
         title="nesto"
       ></iframe>
+      <Play onClick={() => playLink(el.id)}>Play</Play>
     </LickItemBox>
   ));
 

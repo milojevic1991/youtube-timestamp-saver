@@ -3,6 +3,8 @@ import { regex } from '../../regex';
 
 const initialState = {
   listData: [],
+  playData: [],
+  play: false,
 };
 
 const items = (state = initialState, action) => {
@@ -40,6 +42,32 @@ const items = (state = initialState, action) => {
       return {
         ...state,
         listData: state.listData.filter((el) => el['id'] !== action.payload),
+      };
+
+    case actionTypes.PLAY_VIDEO:
+      console.log('play id', action.payload);
+
+      return {
+        ...state,
+        playData: state.listData.filter((el) => el['id'] === action.payload),
+        play: true,
+      };
+
+    case actionTypes.CANCEL_VIDEO:
+      console.log('play id', action.payload);
+
+      return {
+        ...state,
+        play: false,
+        playData: [],
+      };
+
+    case actionTypes.LOAD_ITEMS:
+      console.log('LOAD ITEMS EVO GA', action.payload);
+
+      return {
+        ...state,
+        listData: action.payload,
       };
     default:
       return state;

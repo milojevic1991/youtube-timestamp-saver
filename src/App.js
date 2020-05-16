@@ -1,11 +1,16 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './App.css';
 import MainInput from './components/MainInput/mainInput';
 import LickItemWrapp from './components/LickItemWrapp/lickItemWrapp';
-import { deleteItem } from './store/actions/action';
+import Player from './components/Player/player';
+import { deleteItem, cancelVideo } from './store/actions/action';
 
 function App() {
+  const state = useSelector((state) => state.items);
+
+  const dispatch = useDispatch();
   const deleteHandler = (e) => {
     console.log('evp ga', e);
   };
@@ -13,6 +18,7 @@ function App() {
     <div className="App">
       <MainInput />
       <LickItemWrapp />
+      <Player videoData={state} cancelPlayer={() => dispatch(cancelVideo())} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { CloseCircle } from '@styled-icons/evaicons-solid/CloseCircle';
 export const LickItemBox = styled.div`
-  height: 50%;
+  height: auto;
   width: 30%;
   background-color: white;
   margin: 1rem;
@@ -20,4 +20,13 @@ export const LickItemDelete = styled(CloseCircle)`
   color: red;
   height: 50px;
   width: 30px;
+`;
+
+export const Play = styled.div`
+  color: black;
+  height: 70px;
+  width: 70px;
+  background: #dfdfdf;
+  cursor: pointer;
+  margin: 0 auto;
 `;
