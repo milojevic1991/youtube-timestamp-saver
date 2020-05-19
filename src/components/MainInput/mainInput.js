@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Wrapper, InputWrapper, Form, Input, Submit } from './styled';
+import { Wrapper, InputWrapper, Form, Input, Submit, Title } from './styled';
 import { useComponentId } from './id';
 import { addItem } from '../../store/actions/action';
 
 import { regex } from '../../regex';
 import _uniqueId from 'lodash/uniqueId';
+
+import blobOrange from '../../assets/img/blob.png';
+import Line from '../../assets/img/line.png';
 
 // const regexYT = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*)(?:(\?t|&start)=(\d+))?.*/;
 
@@ -55,6 +58,8 @@ const MainInput = () => {
 
   return (
     <Wrapper>
+      <Title>YouTube Pocket</Title>
+      <img src={blobOrange} alt="" />
       <InputWrapper>
         <Form onSubmit={onSubmitHandler}>
           <Input
@@ -78,7 +83,9 @@ const MainInput = () => {
             type="submit"
             placeholder="Name?"
             value="click"
-          ></Submit>
+          >
+            <i class="las la-angle-down"></i>
+          </Submit>
         </Form>
       </InputWrapper>
     </Wrapper>

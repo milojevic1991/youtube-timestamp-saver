@@ -1,13 +1,22 @@
 import React from 'react';
-import { LickItemBox, LickItemTitle, LickItemDelete, Play } from './styled';
+import {
+  LickItemBox,
+  LickItemTitle,
+  LickItemDelete,
+  PlayBtn,
+  PlayIcon,
+} from './styled';
+
+import Blob from '../../../assets/img/blob.png';
 
 const LickItem = ({ linkData, deleteLink, playLink }) => {
   const listBox = linkData.map((el, index) => (
     <LickItemBox key={index}>
       {/* prettier-ignore */}
+      <img src = {Blob} alt=""/>
       <LickItemDelete onClick={() => deleteLink(el.id)} />
       <LickItemTitle>{el.title}</LickItemTitle>
-      <iframe
+      {/* <iframe
         width="50%"
         height="50%"
         // src="https://www.youtube.com/embed/zVuscuKIMnw?start=130"
@@ -16,8 +25,10 @@ const LickItem = ({ linkData, deleteLink, playLink }) => {
         frameborder="0"
         allowfullscreen
         title="nesto"
-      ></iframe>
-      <Play onClick={() => playLink(el.id)}>Play</Play>
+      ></iframe> */}
+      <PlayBtn onClick={() => playLink(el.id)}>
+        <PlayIcon />
+      </PlayBtn>
     </LickItemBox>
   ));
 

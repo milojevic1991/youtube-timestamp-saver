@@ -17,10 +17,12 @@ const Player = ({ videoData, cancelPlayer }) => {
       <PlayerWrapper>
         <iframe
           style={{ boxShadow: '0 10px 80px #000000b5;' }}
-          width="75%"
-          height="75%"
+          width="100%"
+          height="100%"
+          allow="autoplay"
           //  src="https://www.youtube.com/embed/mjVRS2X7z_0?start=130"
-          src={`https://www.youtube.com/embed/${videoData.playData[0].link[2]}?start=${videoData.playData[0].link[4]}`}
+          // src={`https://www.youtube.com/embed/${videoData.playData[0].link[2]}?autoplay=1&mute=0&enablejsapi=1?start=${videoData.playData[0].link[4]}`}
+          src={`https://www.youtube.com/embed/${videoData.playData[0].link[2]}?start=${videoData.playData[0].link[4]}&autoplay=1`}
           frameborder="0"
           allowfullscreen
           title="nesto"
