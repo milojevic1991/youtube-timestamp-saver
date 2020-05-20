@@ -11,6 +11,7 @@ export const LickItemBox = styled.div`
   border-radius: 50px;
   background: #0f1423;
   box-shadow: 7px 7px 25px #0b0e19, -7px -7px 25px #141a2e;
+  box-shadow: 3px 3px 19px #05070e, -3px -3px 15px #1f273f;
   position: relative;
 
   img {
@@ -51,8 +52,8 @@ export const LickItemDelete = styled(CloseOutline)`
 
 export const PlayIcon = styled(Play)`
   color: #ef6509;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   position: relative;
   cursor: pointer;
   transition: 0.5s;
@@ -65,8 +66,9 @@ export const PlayIcon = styled(Play)`
   // }
 `;
 
-export const PlayBtn = styled.div`
+export const PlayBtn = styled.button`
   color: #e4610b;
+  border: none;
   text-align: center;
   vertical-align: middle;
   height: 80px;
@@ -76,6 +78,12 @@ export const PlayBtn = styled.div`
   border-radius: 70px;
   background: #0f1423;
   box-shadow: 5px 5px 12px #06080e, -1px -2px 12px #182038;
+
+  border-radius: 50%;
+  background: #0f1423;
+  // box-shadow: inset 5px 5px 9px #0c101b, inset -5px -5px 9px #12182b;
+  box-shadow: inset 5px 5px 9px #07091082, inset -5px -5px 9px #12182b;
+
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -95,15 +103,30 @@ export const PlayBtn = styled.div`
   font-size: 13px;
   position: relative;
   margin-top: 3rem;
-  transition: 0.2s;
+  transition: 0.2s all;
 
   &:hover {
-    transform: translateY(-5px);
+    //
     border-radius: 50%;
-    background: #0c111e;
-    box-shadow: 9px 9px 18px #0b0f1a, -9px -9px 18px #0d1322;
-
     // background: #0c111e;
-    // box-shadow: 5px 5px 12px #06080e, -1px -2px 12px #181f35;
+    // box-shadow: 9px 9px 18px #0b0f1a, -9px -9px 18px #0d1322;
+    box-shadow: inset 5px 5px 9px #020305a6, inset -5px -5px 9px #12182b;
+    transition: box-shadow 0.2s;
+  }
+
+  &:hover ${PlayIcon} {
+    transform: scale(1.3);
+    // transform: scale(1.9);
+    color: #f00;
+  }
+
+  :focus {
+    transform: translateY(2px) scale(0.9);
+    box-shadow: inset 5px 5px 19px #020305a6, inset -5px -5px 9px #12182b;
+    outline: none;
+    transition: 0.2s all;
+  }
+  :visited {
+    transform: translateY(0px);
   }
 `;

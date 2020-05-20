@@ -7,7 +7,7 @@ import LickItem from './LickItem/lickItem';
 import { deleteItem, playVideo, loadItems } from '../../store/actions/action';
 
 const LickItemWrapp = () => {
-  const state = useSelector((state) => state.items.listData);
+  const state = useSelector((state) => state.items);
   const dispatch = useDispatch();
 
   const deleteHandler = (e) => {
@@ -32,12 +32,15 @@ const LickItemWrapp = () => {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    console.log('state.playData', state.playData);
+  }, [state]);
   return (
     <Wrapper>
       <LickItem
         playLink={playHandler}
         deleteLink={deleteHandler}
-        linkData={state}
+        linkData={state.isSearching ? state.displayedData : state.listData}
       />
     </Wrapper>
   );

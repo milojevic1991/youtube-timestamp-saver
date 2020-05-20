@@ -33,3 +33,16 @@ export const loadItems = (items) => {
     payload: items,
   };
 };
+export const searchItems = (searchItem) => {
+  return {
+    type: actionTypes.SEARCH_ITEMS,
+    payload: searchItem,
+    isSearching: searchItem.length === 0 ? false : true,
+  };
+};
+
+export const closeSearch = () => {
+  return {
+    type: actionTypes.CLOSE_SEARCH,
+  };
+};

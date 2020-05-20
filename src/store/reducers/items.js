@@ -4,6 +4,8 @@ import { regex } from '../../regex';
 const initialState = {
   listData: [],
   playData: [],
+  displayedData: [],
+  isSearching: false,
   play: false,
 };
 
@@ -11,28 +13,18 @@ const items = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_LINK:
       let linkData;
-      // const regexYT = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*)(?:(\?t|&start)=(\d+))?.*/;
 
       let ids = action.payload.link.match(regex);
 
-      // console.log('ids proba', ids[ids.length - 1]);
-      // if (regexYT.test(action.payload.link) && ids[ids.length - 1]) {
-      //   linkData = {
-      //     ...action.payload,
-      //     link: ids,
-      //   };
-      // } else {
-      //   linkData = 'sss';
-      // }
-      // console.log(ids);
-
       linkData = {
         ...action.payload,
+
         link: ids,
       };
 
       return {
         ...state,
+        isSearching: false,
         listData: [...state.listData, linkData],
       };
 
@@ -41,7 +33,11 @@ const items = (state = initialState, action) => {
 
       return {
         ...state,
+        isSearching: false,
         listData: state.listData.filter((el) => el['id'] !== action.payload),
+        displayedData: state.displayedData.filter(
+          (el) => el['id'] !== action.payload
+        ),
       };
 
     case actionTypes.PLAY_VIDEO:
@@ -67,7 +63,25 @@ const items = (state = initialState, action) => {
 
       return {
         ...state,
+        isSearching: false,
         listData: action.payload,
+      };
+
+    case actionTypes.SEARCH_ITEMS:
+      console.log('SERCUJE SEARCH', action.payload);
+
+      return {
+        ...state,
+        isSearching: true,
+        displayedData: state.listData.filter((el) =>
+          el.title.toLowerCase().includes(action.payload.toLowerCase())
+        ),
+      };
+
+    case actionTypes.CLOSE_SEARCH:
+      return {
+        ...state,
+        isSearching: false,
       };
     default:
       return state;
